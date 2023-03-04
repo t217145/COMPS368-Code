@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitmq
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rabbitmq
+  template:
+    metadata:
+      labels:
+        app: rabbitmq
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+      - name: rabbitmq
+        image: docker.io/library/rabbitmq:3.11.2-management
+        env:
+        - name: RABBITMQ_DEFAULT_USER
+          value: "admin"
+        - name: RABBITMQ_DEFAULT_PASS
+          value: "admin"          
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 15672
+          name: rabbitmq-admin
+        - containerPort: 5672
+          name: rabbitmq          
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitmq
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 31672
+    name: rabbitmq-admin
+    protocol: TCP
+    targetPort: 15672
+  - port: 31673
+    name: rabbitmq
+    protocol: TCP
+    targetPort: 5672 
+  selector:
+    app: rabbitmq
