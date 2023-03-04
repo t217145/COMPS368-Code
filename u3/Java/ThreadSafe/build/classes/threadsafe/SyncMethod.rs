@@ -1,0 +1,3 @@
+threadsafe.CounterSafeSyncMethod
+threadsafe.DummyThreadSafeSyncMethod
+threadsafe.SyncMethod

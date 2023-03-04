@@ -1,0 +1,98 @@
+2023-01-28 23:58:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MYUSERS" already exists; SQL statement:
+CREATE TABLE myusers ( usrcode VARCHAR(50) NOT NULL, password VARCHAR(100) NOT NULL, name VARCHAR(50) NOT NULL, isactive TINYINT NOT NULL DEFAULT 1, PRIMARY KEY (usrcode) ) [42101-214]
+2023-01-28 23:58:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MYROLES" already exists; SQL statement:
+CREATE TABLE myroles ( usrcode VARCHAR(50) NOT NULL, roles VARCHAR(50) NOT NULL, FOREIGN KEY (usrcode) REFERENCES myusers(usrcode) ) [42101-214]
+2023-01-28 23:58:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Index "IX_MYROLES" already exists; SQL statement:
+CREATE UNIQUE INDEX ix_myroles on myroles (usrcode, roles) [42111-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.ddl.CreateIndex.update(CreateIndex.java:74)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:261)
+	at org.springframework.jdbc.datasource.init.ResourceDatabasePopulator.populate(ResourceDatabasePopulator.java:254)
+	at org.springframework.jdbc.datasource.init.DatabasePopulatorUtils.execute(DatabasePopulatorUtils.java:54)
+	at org.springframework.boot.jdbc.init.DataSourceScriptDatabaseInitializer.runScripts(DataSourceScriptDatabaseInitializer.java:87)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.runScripts(AbstractScriptDatabaseInitializer.java:146)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyScripts(AbstractScriptDatabaseInitializer.java:108)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applySchemaScripts(AbstractScriptDatabaseInitializer.java:98)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.initializeDatabase(AbstractScriptDatabaseInitializer.java:76)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.afterPropertiesSet(AbstractScriptDatabaseInitializer.java:66)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1797)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1747)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1130)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:905)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:584)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:432)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291)
+	at comps368.u7.jdbcauth.web.AuthenticateByJdbcApplication.main(AuthenticateByJdbcApplication.java:10)
+2023-01-29 12:50:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MYUSERS" already exists; SQL statement:
+CREATE TABLE myusers ( usrcode VARCHAR(50) NOT NULL, password VARCHAR(100) NOT NULL, name VARCHAR(50) NOT NULL, isactive TINYINT NOT NULL DEFAULT 1, PRIMARY KEY (usrcode) ) [42101-214]
+2023-01-29 12:50:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MYROLES" already exists; SQL statement:
+CREATE TABLE myroles ( usrcode VARCHAR(50) NOT NULL, roles VARCHAR(50) NOT NULL, FOREIGN KEY (usrcode) REFERENCES myusers(usrcode) ) [42101-214]
+2023-01-29 12:50:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Index "IX_MYROLES" already exists; SQL statement:
+CREATE UNIQUE INDEX ix_myroles on myroles (usrcode, roles) [42111-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.ddl.CreateIndex.update(CreateIndex.java:74)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:261)
+	at org.springframework.jdbc.datasource.init.ResourceDatabasePopulator.populate(ResourceDatabasePopulator.java:254)
+	at org.springframework.jdbc.datasource.init.DatabasePopulatorUtils.execute(DatabasePopulatorUtils.java:54)
+	at org.springframework.boot.jdbc.init.DataSourceScriptDatabaseInitializer.runScripts(DataSourceScriptDatabaseInitializer.java:87)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.runScripts(AbstractScriptDatabaseInitializer.java:146)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyScripts(AbstractScriptDatabaseInitializer.java:108)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applySchemaScripts(AbstractScriptDatabaseInitializer.java:98)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.initializeDatabase(AbstractScriptDatabaseInitializer.java:76)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.afterPropertiesSet(AbstractScriptDatabaseInitializer.java:66)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1797)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1747)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1130)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:905)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:584)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:432)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291)
+	at comps368.u7.jdbcauth.web.AuthenticateByJdbcApplication.main(AuthenticateByJdbcApplication.java:10)

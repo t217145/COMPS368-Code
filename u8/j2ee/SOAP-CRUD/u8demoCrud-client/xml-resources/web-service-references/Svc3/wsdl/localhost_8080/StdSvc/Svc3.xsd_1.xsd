@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.4.0 (wsit240-7e98ff4; 2017-08-03T21:19:54+0200) JAXWS-RI/2.3.0 JAXWS-API/2.3.0 JAXB-RI/2.3.0 JAXB-API/2.3.0 svn-revision#unknown. --><xs:schema xmlns:tns="http://u8demo/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://u8demo/">
+
+<xs:element name="AddStd" type="tns:AddStd"/>
+
+<xs:element name="AddStdResponse" type="tns:AddStdResponse"/>
+
+<xs:element name="getAll" type="tns:getAll"/>
+
+<xs:element name="getAllResponse" type="tns:getAllResponse"/>
+
+<xs:element name="students" type="tns:students"/>
+
+<xs:complexType name="getAll">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getAllResponse">
+<xs:sequence>
+<xs:element name="AllStudents" type="tns:students" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="students">
+<xs:sequence>
+<xs:element name="id" type="xs:int" minOccurs="0"/>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+<xs:element name="ouhkID" type="xs:string" minOccurs="0"/>
+<xs:element name="phone" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AddStd">
+<xs:sequence>
+<xs:element name="arg0" type="tns:students" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AddStdResponse">
+<xs:sequence>
+<xs:element name="DataBaseId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

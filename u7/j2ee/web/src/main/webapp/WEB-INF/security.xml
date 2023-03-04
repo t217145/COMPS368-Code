@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<b:beans xmlns="http://www.springframework.org/schema/security"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:b="http://www.springframework.org/schema/beans"
+       
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+                           http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+">
+
+    <!-- basic -->
+    <!--<http>
+        <http-basic/>
+        <intercept-url pattern="/adm/**" access="hasRole('ADMIN')" />
+        <intercept-url pattern="/**" access="isAuthenticated()" />
+    </http>
+    <user-service>
+        <user name="cyrus" password="{noop}cyruspass" authorities="ROLE_ADMIN" />
+        <user name="usr" password="{noop}123456" authorities="ROLE_USER" />
+    </user-service>-->
+    
+    <!-- form based - In memory -->
+    <!--<http auto-config="true">
+        <intercept-url pattern="/adm/**" access="hasRole('ADMIN')" />
+        <intercept-url pattern="/**" access="isAuthenticated()" />
+    </http>
+    <user-service>
+        <user name="cyrus" password="{noop}cyruspass" authorities="ROLE_ADMIN" />
+        <user name="usr" password="{noop}123456" authorities="ROLE_USER" />
+    </user-service>-->
+
+    <!-- form based - Relational DB -->
+    <http auto-config="true">
+        <intercept-url pattern="/adm/**" access="hasRole('ADMIN')" />
+        <intercept-url pattern="/**" access="isAuthenticated()" />
+    </http>
+    
+    <b:bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <b:property name="jndiName" value="jdbc/u7demo"></b:property>
+    </b:bean>
+    
+    <b:bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+    
+    <authentication-manager>
+        <authentication-provider>
+            <password-encoder ref="bCryptPasswordEncoder" />
+            <jdbc-user-service 
+                data-source-ref="dataSource"
+                users-by-username-query=
+                    "SELECT uCode as username, password, true FROM users WHERE usercode=?"
+                authorities-by-username-query=
+                    "SELECT uCode as username, CONCAT('ROLE_', UPPER(gCode)) as role FROM vwusrgrp WHERE uCode=?" />
+        </authentication-provider>
+    </authentication-manager>  
+</b:beans>

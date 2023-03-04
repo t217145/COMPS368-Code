@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+            </tr>            
+            <tr th:each="ss : ${allContacts}">
+                <td th:text="${ss.id}" />
+                <td th:text="${ss.name}" />
+                <td th:text="${ss.phone}" />
+                <td th:text="${ss.email}" />
+            </tr>          
+        </table>
+    </body>
+</html>

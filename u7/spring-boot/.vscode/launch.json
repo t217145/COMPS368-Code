@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-OAuthDemoApplication<oauth.web>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "comps368.u7.oauth.web.OAuthDemoApplication",
+            "projectName": "oauth.web",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=14336 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=oauth.web"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-BasicWebAuthenticationApplication<basicauth.web>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "comps368.u7.basicauth.web.BasicWebAuthenticationApplication",
+            "projectName": "basicauth.web",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

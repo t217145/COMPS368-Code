@@ -1,0 +1,39 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        received-in-0:
+          # destination: default.messages
+          # binder: localRabbit
+          destination: comps368.u9
+          binder: localSolace
+          consumer:
+            max-attempts: 3
+        sendOut-out-0:
+          # destination: default.messages
+          # binder: localRabbit
+          destination: comps368.u9
+          binder: localSolace
+          consumer:
+            max-attempts: 3              
+      binders:
+        localRabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                username: admin
+                password: admin
+        localSolace:
+          type: solace
+          environment:
+            solace:
+              java:
+                host: tcp://localhost:55555
+                msgVpn: default
+                clientUsername: admin
+                clientPassword: admin
+server:
+  port: 8081

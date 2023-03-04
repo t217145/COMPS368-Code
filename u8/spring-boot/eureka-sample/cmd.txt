@@ -1,0 +1,11 @@
+cd .\eureka-sample\server
+cd .\eureka-sample\web.svc
+cd .\eureka-sample\web.svc
+cd .\eureka-sample\web.mvc
+
+mvn
+mvn -D spring-boot.run.profiles=ws1
+mvn -D spring-boot.run.profiles=ws2
+mvn
+
+mvn clean

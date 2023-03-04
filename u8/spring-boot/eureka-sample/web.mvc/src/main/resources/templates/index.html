@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+</head>
+<body>
+<section layout:fragment="customContent">
+    <table class="table table-striped">
+        <tr>
+            <th># </th>
+            <th>Name </th>
+            <th>Code</th>
+            <th>Gender </th>
+        </tr>
+        <tr th:each="std : ${allStd}">
+            <td th:text="${std.stdId}" />
+            <td th:text="${std.stdName}" />
+            <td th:text="${std.stdCode}" />
+            <td th:text="${std.gender}" />
+        </tr>
+    </table>
+</section>
+</body>
+</html>

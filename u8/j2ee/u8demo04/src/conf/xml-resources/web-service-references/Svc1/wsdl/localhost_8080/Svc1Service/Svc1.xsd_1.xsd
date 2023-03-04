@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.4.0 (wsit240-7e98ff4; 2017-08-03T21:19:54+0200) JAXWS-RI/2.3.0 JAXWS-API/2.3.0 JAXB-RI/2.3.0 JAXB-API/2.3.0 svn-revision#unknown. --><xs:schema xmlns:tns="http://u8demo/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://u8demo/">
+
+<xs:element name="CalculateAreaNPerimeter" type="tns:CalculateAreaNPerimeter"/>
+
+<xs:element name="CalculateAreaNPerimeterResponse" type="tns:CalculateAreaNPerimeterResponse"/>
+
+<xs:element name="HelloBasic" type="tns:HelloBasic"/>
+
+<xs:element name="HelloBasicResponse" type="tns:HelloBasicResponse"/>
+
+<xs:complexType name="CalculateAreaNPerimeter">
+<xs:sequence>
+<xs:element name="RectangleToCalculate" type="tns:rectangle" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="rectangle">
+<xs:sequence>
+<xs:element name="height" type="xs:int"/>
+<xs:element name="width" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CalculateAreaNPerimeterResponse">
+<xs:sequence>
+<xs:element name="AreaNPerimeter" type="tns:result" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="result">
+<xs:sequence>
+<xs:element name="area" type="xs:int"/>
+<xs:element name="perimeter" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="HelloBasic">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="HelloBasicResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

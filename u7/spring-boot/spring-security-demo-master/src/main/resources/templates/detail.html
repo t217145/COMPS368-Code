@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Details of ${objs.name}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <table width="100%" style="background-color: blue;">
+            <tr>
+                <td style="text-align: right;">
+                    <a th:href="@{/logout}" style="color:white;">Logout</a>
+                </td>
+            </tr>
+        </table>
+        <br/>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <td th:text="${objs.id}" />
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td th:text="${objs.name}" />
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td th:text="${objs.email}" />
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td th:text="${objs.Phone}" />
+            </tr>
+        </table>
+        <a th:href="@{/list}">Back</a>
+    </body>
+</html>

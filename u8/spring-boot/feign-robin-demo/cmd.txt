@@ -1,0 +1,4 @@
+mvn
+mvn -D spring-boot.run.profiles=ws1
+mvn -D spring-boot.run.profiles=ws2
+mvn

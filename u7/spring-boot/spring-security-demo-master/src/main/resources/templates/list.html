@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>All Contacts</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <table width="100%" style="background-color: blue;">
+            <tr>
+                <td style="text-align: right;">
+                    <a th:href="@{/logout}" style="color:white;">Logout</a>
+                </td>
+            </tr>
+        </table>
+        <br/> 
+        <a th:href="@{/create}">Create</a>  
+        <br/>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>&nbsp;</th>
+            </tr>
+            <th:block th:each="cc:${allContacts}">
+                <tr>
+                    <td th:text="${cc.id}" />
+                    <td th:text="${cc.name}" />
+                    <td th:text="${cc.email}" />
+                    <td th:text="${cc.phone}" />
+                    <td>
+                        <a th:href="@{/detail/{id}(id=${cc.id})}">Details</a> &nbsp; |
+                        <a th:href="@{/update/{id}(id=${cc.id})}">Update</a> &nbsp; |
+                        <a th:href="@{/delete/{id}(id=${cc.id})}">Delete</a>
+                    </td>
+                </tr>
+            </th:block>
+        </table>
+    </body>
+</html>

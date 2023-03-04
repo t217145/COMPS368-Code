@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.4.0 (wsit240-7e98ff4; 2017-08-03T21:19:54+0200) JAXWS-RI/2.3.0 JAXWS-API/2.3.0 JAXB-RI/2.3.0 JAXB-API/2.3.0 svn-revision#unknown. --><xs:schema xmlns:tns="http://comps368/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://comps368/">
+
+<xs:element name="CreateStudents" type="tns:CreateStudents"/>
+
+<xs:element name="CreateStudentsResponse" type="tns:CreateStudentsResponse"/>
+
+<xs:element name="hello" type="tns:hello"/>
+
+<xs:element name="helloResponse" type="tns:helloResponse"/>
+
+<xs:element name="orderTicket" type="tns:orderTicket"/>
+
+<xs:element name="orderTicketResponse" type="tns:orderTicketResponse"/>
+
+<xs:complexType name="orderTicket">
+<xs:sequence>
+<xs:element name="eventId" type="xs:int"/>
+<xs:element name="numberOfTicket" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="orderTicketResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="hello">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="helloResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CreateStudents">
+<xs:sequence>
+<xs:element name="stdId" type="xs:int"/>
+<xs:element name="stdName" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CreateStudentsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:students" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="students">
+<xs:sequence>
+<xs:element name="stdId" type="xs:int"/>
+<xs:element name="stdName" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
