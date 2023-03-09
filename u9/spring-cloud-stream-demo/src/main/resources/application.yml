@@ -20,8 +20,8 @@ spring:
           environment:
             spring:
               rabbitmq:
-                host: rabbitmq
-                port: 31673
+                host: localhost
+                port: 5672
                 username: admin
                 password: admin
         localSolace:
