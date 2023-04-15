@@ -2,7 +2,7 @@ package comps368.u7.advsetting.web.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+//import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -14,29 +14,31 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity(prePostEnabled = true)
+//@EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig{
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http, UserDetailsService users) throws Exception {
-		http
+        http
             .logout(withDefaults())
-            .authorizeHttpRequests((authorize) -> authorize
+            .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/login", "/logout", "/resources/**").permitAll()
+                .requestMatchers("/user").hasAnyRole("ROLE_USER","ROLE_ADMIN")
+                .requestMatchers("/admin").hasRole("ROLE_ADMIN")
                 .anyRequest().authenticated()
             )
-            .formLogin((form) -> form
+            .formLogin(form -> form
                 .loginPage("/login")
                 .permitAll()
             )
-            .sessionManagement((sessions) -> sessions
-                .sessionConcurrency((concurrency) -> concurrency
+            .sessionManagement(sessions -> sessions
+                .sessionConcurrency(concurrency -> concurrency
                     .maximumSessions(1)
                     .expiredUrl("/login?expired")
                 )
             )
-            .rememberMe((rememberMe) -> rememberMe.userDetailsService(users))
-            .csrf().ignoringRequestMatchers("/login", "/logout", "/resources/**");
+            .rememberMe(rememberMe -> rememberMe.userDetailsService(users))
+            .csrf(csrf -> csrf.ignoringRequestMatchers("/login", "/logout", "/resources/**"));
 		return http.build();
 	}
 
