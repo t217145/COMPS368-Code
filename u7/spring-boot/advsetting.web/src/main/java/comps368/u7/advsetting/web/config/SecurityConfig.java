@@ -2,7 +2,7 @@ package comps368.u7.advsetting.web.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-//import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -14,7 +14,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
-//@EnableMethodSecurity(prePostEnabled = true)
+@EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig{
 
 	@Bean
@@ -23,11 +23,11 @@ public class SecurityConfig{
             .logout(withDefaults())
             .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/login", "/logout", "/resources/**").permitAll()
-                .requestMatchers("/user").hasAnyRole("ROLE_USER","ROLE_ADMIN")
                 .requestMatchers("/admin").hasRole("ROLE_ADMIN")
+                .requestMatchers("/user").hasAnyRole("ROLE_USER","ROLE_ADMIN")
                 .anyRequest().authenticated()
             )
-            .formLogin(form -> form
+            .formLogin((form) -> form
                 .loginPage("/login")
                 .permitAll()
             )
