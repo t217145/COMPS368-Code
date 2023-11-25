@@ -16,6 +16,7 @@
             <td>Email</td>
             <td>Gender</td>
             <td>Date of birth</td>
+            <td>&nbsp;</td>
         </tr>
         <tr th:each="contact : ${contacts}">
             <td th:text="${contact.cId}" />
@@ -24,6 +25,10 @@
             <td th:text="${contact.email}" />
             <td th:text="${contact.gender.toString() == 'M' ? 'Male' : 'Female'}"></td>
             <td th:text="${contact.dob}" />
+            <td>
+                <a th:href="@{/update/{id}(id=${contact.cId})}" class="btn btn-warning">Edit</a>&nbsp;&nbsp;
+                <a th:href="@{/delete/{id}(id=${contact.cId})}" class="btn btn-danger">Delete</a>
+            </td>
         </tr>
     </table>
 </body>
