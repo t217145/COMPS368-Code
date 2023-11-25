@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Contacts</title>
+    <link ref="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <button class="btn btn-primary" th:onclick="'javascript:window.location=\'' + @{/create} + '\';'">Create</button>
+    <table class="table">
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Phone</td>
+            <td>Email</td>
+            <td>Gender</td>
+        </tr>
+        <tr th:each="cc : ${contacts}">
+            <td th:text="${cc.cId}" />
+            <td th:text="${cc.cName}" />
+            <td th:text="${cc.phone}" />
+            <td th:text="${cc.email}" />
+            <td th:text="${cc.isMale ? 'Male' : 'Female'}" />
+        </tr>
+    </table>
+
+    
+</body>
+</html>

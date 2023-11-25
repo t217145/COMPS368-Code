@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p th:text="'Your name is : ' + ${myName}" />
+    <p>Your age is : [[${myAge}]]</p>
+    <br />
+    <p th:text="|Your name is ${myName} and age is ${myAge} years old|" />
+</body>
+</html>

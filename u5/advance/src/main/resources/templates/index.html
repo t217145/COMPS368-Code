@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>List Contacts</title>
+</head>
+<body>
+<div layout:fragment="customContent">
+    <button class="btn btn-primary" th:onclick="'javascript:window.location=\'' + @{/create} + '\';'">Create</button>
+    <table class="table table-striped">
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Phone</td>
+            <td>Email</td>
+            <td>Gender</td>
+            <td>Date of birth</td>
+        </tr>
+        <tr th:each="contact : ${contacts}">
+            <td th:text="${contact.cId}" />
+            <td th:text="${contact.cName}" />
+            <td th:text="${contact.phone}" />
+            <td th:text="${contact.email}" />
+            <td th:text="${contact.gender.toString() == 'M' ? 'Male' : 'Female'}"></td>
+            <td th:text="${contact.dob}" />
+        </tr>
+    </table>
+</body>
+</html>

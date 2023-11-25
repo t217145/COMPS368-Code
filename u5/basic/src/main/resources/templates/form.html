@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="#" method="post" th:action="@{/formPost/handleForm}" th:object="${formObj}">
+        <table class="table">
+            <tr>
+                <td scope="row">Name</td>
+                <td><input type="text" th:field="*{name}" /></td>
+            </tr>
+            <tr>
+                <td scope="row">Age</td>
+                <td><input type="text" th:field="*{age}" /></td>
+            </tr>
+            <tr>
+                <td scope="row" colspan="2"><input type="Submit" value="Send" /></td>
+            </tr>
+        </table>    
+    </form>
+</body>
+</html>
