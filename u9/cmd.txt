@@ -8,6 +8,12 @@ kubectl get service rabbitmq --watch
 
 kubectl exec --stdin --tty <<your pod name>> -- /bin/bash
 
+docker run 
+
+docker run -itd -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=admin -p 15672:15672 -p 5672:5672 --name comps368-rmq docker.io/library/rabbitmq:3-management
+
 docker run -itd -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=admin -p 15672:15672 -p 5672:5672 --name rabbitmq docker.io/library/rabbitmq:3.11.2-management
 
 docker run -d -p 8080:8080 -p 55555:55555 -p 8088:80 --shm-size=2g --env username_admin_globalaccesslevel=admin --env username_admin_password=admin --name=solace solace/solace-pubsub-standard
+
+docker run --name comps368db -p 3306:3306 -e MYSQL_ROOT_PASSWORD=admin -itd mysql:8
