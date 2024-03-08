@@ -17,3 +17,10 @@ docker run -itd -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=admin -p
 docker run -d -p 8080:8080 -p 55555:55555 -p 8088:80 --shm-size=2g --env username_admin_globalaccesslevel=admin --env username_admin_password=admin --name=solace solace/solace-pubsub-standard
 
 docker run --name comps368db -p 3306:3306 -e MYSQL_ROOT_PASSWORD=admin -itd mysql:8
+
+docker run -itd --name gf5 -p 18080:8080 -p 14848:4848 glassfish
+ls -l
+cd bin
+asadmin change-admin-password
+asadmin stop-domain
+asadmin enable-secure-admin
