@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class BasicController {
     
+    //add a comment here
     @GetMapping({"", "/", "/index"})
     public String index(ModelMap m){
         m.addAttribute("myName", "Cyrus Cheng");
